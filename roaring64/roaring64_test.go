@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/RoaringBitmap/roaring"
+	"github.com/chirlchen/roaring
 	"github.com/stretchr/testify/assert"
 	"github.com/willf/bitset"
 )
@@ -122,7 +122,7 @@ func TestRoaringBitmapAddMany(t *testing.T) {
 	assert.EqualValues(t, len(array), bmp.GetCardinality())
 }
 
-// https://github.com/RoaringBitmap/roaring/issues/64
+// https://github.com/chirlchen/roaringues/64
 func TestFlip64(t *testing.T) {
 	bm := New()
 	bm.AddInt(0)
@@ -138,7 +138,7 @@ func TestFlip64(t *testing.T) {
 	}
 }
 
-// https://github.com/RoaringBitmap/roaring/issues/64
+// https://github.com/chirlchen/roaringues/64
 func TestFlip64Off(t *testing.T) {
 	bm := New()
 	bm.AddInt(10)

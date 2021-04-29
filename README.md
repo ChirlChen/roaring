@@ -1,11 +1,11 @@
-roaring [![Build Status](https://travis-ci.org/RoaringBitmap/roaring.png)](https://travis-ci.org/RoaringBitmap/roaring) [![GoDoc](https://godoc.org/github.com/RoaringBitmap/roaring?status.svg)](https://godoc.org/github.com/RoaringBitmap/roaring) [![GoDoc](https://godoc.org/github.com/RoaringBitmap/roaring/roaring64?status.svg)](https://godoc.org/github.com/RoaringBitmap/roaring/roaring64) [![Go Report Card](https://goreportcard.com/badge/RoaringBitmap/roaring)](https://goreportcard.com/report/github.com/RoaringBitmap/roaring)
-[![Build Status](https://cloud.drone.io/api/badges/RoaringBitmap/roaring/status.svg)](https://cloud.drone.io/RoaringBitmap/roaring)
-![Go-CI](https://github.com/RoaringBitmap/roaring/workflows/Go-CI/badge.svg)
-![Go-ARM-CI](https://github.com/RoaringBitmap/roaring/workflows/Go-ARM-CI/badge.svg)
-![Go-Windows-CI](https://github.com/RoaringBitmap/roaring/workflows/Go-Windows-CI/badge.svg)
+roaring [![Build Status](https://travis-ci.org/chirlchen/roaring.png)](https://travis-ci.org/chirlchen/roaring) [![GoDoc](https://godoc.org/github.com/chirlchen/roaring?status.svg)](https://godoc.org/github.com/chirlchen/roaring) [![GoDoc](https://godoc.org/github.com/chirlchen/roaring/roaring64?status.svg)](https://godoc.org/github.com/chirlchen/roaring/roaring64) [![Go Report Card](https://goreportcard.com/badge/chirlchen/roaring)](https://goreportcard.com/report/github.com/chirlchen/roaring)
+[![Build Status](https://cloud.drone.io/api/badges/chirlchen/roaring/status.svg)](https://cloud.drone.io/chirlchen/roaring)
+![Go-CI](https://github.com/chirlchen/roaring/workflows/Go-CI/badge.svg)
+![Go-ARM-CI](https://github.com/chirlchen/roaring/workflows/Go-ARM-CI/badge.svg)
+![Go-Windows-CI](https://github.com/chirlchen/roaring/workflows/Go-Windows-CI/badge.svg)
 =============
 
-This is a go version of the Roaring bitmap data structure. 
+This is a go version of the Roaring bitmap data structure.
 
 
 
@@ -168,7 +168,7 @@ Note that the smat library requires Go 1.6 or better.
 
 #### Installation
 
-  - go get -t github.com/RoaringBitmap/roaring
+  - go get -t github.com/chirlchen/roaring
 
 
 ### Example
@@ -180,7 +180,7 @@ package main
 
 import (
     "fmt"
-    "github.com/RoaringBitmap/roaring"
+    "github.com/chirlchen/roaring"
     "bytes"
 )
 
@@ -208,9 +208,9 @@ func main() {
 
     rb3.Or(rb1)
 
-    // computes union of the three bitmaps in parallel using 4 workers  
+    // computes union of the three bitmaps in parallel using 4 workers
     roaring.ParOr(4, rb1, rb2, rb3)
-    // computes intersection of the three bitmaps in parallel using 4 workers  
+    // computes intersection of the three bitmaps in parallel using 4 workers
     roaring.ParAnd(4, rb1, rb2, rb3)
 
 
@@ -272,7 +272,7 @@ package main
 
 import (
     "fmt"
-    "github.com/RoaringBitmap/roaring/roaring64"
+    "github.com/chirlchen/roaring/roaring64"
     "bytes"
 )
 
@@ -325,7 +325,7 @@ Only the 32-bit roaring format is standard and cross-operable between Java, C++,
 
 ### Documentation
 
-Current documentation is available at http://godoc.org/github.com/RoaringBitmap/roaring and http://godoc.org/github.com/RoaringBitmap/roaring64
+Current documentation is available at http://godoc.org/github.com/chirlchen/roaring and http://godoc.org/github.com/RoaringBitmap/roaring64
 
 ### Goroutine safety
 
@@ -341,14 +341,14 @@ or by using `sync.Mutex` to serialize operations on Bitmaps.
 
 We test our software. For a report on our test coverage, see
 
-https://coveralls.io/github/RoaringBitmap/roaring?branch=master
+https://coveralls.io/github/chirlchen/roaring?branch=master
 
 ### Benchmark
 
 Type
 
          go test -bench Benchmark -run -
-         
+
 To run benchmarks on [Real Roaring Datasets](https://github.com/RoaringBitmap/real-roaring-datasets)
 run the following:
 
@@ -363,12 +363,12 @@ You can use roaring with gore:
 
 - go get -u github.com/motemen/gore
 - Make sure that ``$GOPATH/bin`` is in your ``$PATH``.
-- go get github.com/RoaringBitmap/roaring
+- go get github.com/chirlchen/roaring
 
 ```go
 $ gore
 gore version 0.2.6  :help for help
-gore> :import github.com/RoaringBitmap/roaring
+gore> :import github.com/chirlchen/roaring
 gore> x:=roaring.New()
 gore> x.Add(1)
 gore> x.String()
@@ -383,7 +383,7 @@ You can help us test further the library with fuzzy testing:
          go get github.com/dvyukov/go-fuzz/go-fuzz
          go get github.com/dvyukov/go-fuzz/go-fuzz-build
          go test -tags=gofuzz -run=TestGenerateSmatCorpus
-         go-fuzz-build github.com/RoaringBitmap/roaring
+         go-fuzz-build github.com/chirlchen/roaring
          go-fuzz -bin=./roaring-fuzz.zip -workdir=workdir/ -timeout=200
 
 Let it run, and if the # of crashers is > 0, check out the reports in

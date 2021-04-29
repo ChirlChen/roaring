@@ -867,7 +867,7 @@ func (rc *runContainer16) numIntervals() int {
 //
 // runContainer16.search always returns whichInterval16 < len(rc.iv).
 //
-// The search space is from startIndex to endxIndex. If endxIndex is set to zero, then there 
+// The search space is from startIndex to endxIndex. If endxIndex is set to zero, then there
 // no upper bound.
 //
 func (rc *runContainer16) searchRange(key int64, startIndex int64, endxIndex int64) (whichInterval16 int64, alreadyPresent bool, numCompares int) {
@@ -1445,7 +1445,7 @@ func intersectWithLeftover16(astart, alast, bstart, blast int64) (isOverlap, isL
 	return
 }
 
-func (rc *runContainer16) findNextIntervalThatIntersectsStartingFrom(startIndex int64, key int64) (index int64, done bool) {	
+func (rc *runContainer16) findNextIntervalThatIntersectsStartingFrom(startIndex int64, key int64) (index int64, done bool) {
 	w, _, _ := rc.searchRange(key, startIndex, 0)
 	// rc.search always returns w < len(rc.iv)
 	if w < startIndex {
@@ -2241,7 +2241,7 @@ func (rc *runContainer16) iorArray(ac *arrayContainer) container {
 
 // lazyIOR is described (not yet implemented) in
 // this nice note from @lemire on
-// https://github.com/RoaringBitmap/roaring/pull/70#issuecomment-263613737
+// https://github.com/chirlchen/roaring/pull/70#issuecomment-263613737
 //
 // Description of lazyOR and lazyIOR from @lemire:
 //

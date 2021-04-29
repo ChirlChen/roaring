@@ -12,7 +12,7 @@ import (
 	"io"
 	"strconv"
 
-	"github.com/RoaringBitmap/roaring/internal"
+	"github.com/chirlchen/roaring/internal"
 )
 
 // Bitmap represents a compressed bitmap where you can add integers.
@@ -1365,7 +1365,7 @@ func (rb *Bitmap) RemoveRange(rangeStart, rangeEnd uint64) {
 	if rangeEnd-1 > MaxUint32 {
 		// logically, we should assume that the user wants to
 		// remove all values from rangeStart to infinity
-		// see https://github.com/RoaringBitmap/roaring/issues/141
+		// see https://github.com/chirlchen/roaring/issues/141
 		rangeEnd = uint64(0x100000000)
 	}
 	hbStart := uint32(highbits(uint32(rangeStart)))
