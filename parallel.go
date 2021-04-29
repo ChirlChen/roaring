@@ -357,7 +357,7 @@ func ParOr(parallelism int, bitmaps ...*Bitmap) *Bitmap {
 		return bitmaps[0]
 	}
 
-	keyRange := hKey - lKey + 1
+	keyRange := int(hKey) - int(lKey) + 1
 	if keyRange == 1 {
 		// revert to FastOr. Since the key range is 0
 		// no container-level aggregation parallelism is achievable
@@ -370,15 +370,15 @@ func ParOr(parallelism int, bitmaps ...*Bitmap) *Bitmap {
 
 	var chunkSize int
 	var chunkCount int
-	if parallelism*4 > int(keyRange) {
+	if parallelism*4 > keyRange {
 		chunkSize = 1
-		chunkCount = int(keyRange)
+		chunkCount = keyRange
 	} else {
 		chunkCount = parallelism * 4
-		chunkSize = (int(keyRange) + chunkCount - 1) / chunkCount
+		chunkSize = (keyRange + chunkCount - 1) / chunkCount
 	}
 
-	if chunkCount*chunkSize < int(keyRange) {
+	if chunkCount*chunkSize < keyRange {
 		// it's fine to panic to indicate an implementation error
 		panic(fmt.Sprintf("invariant check failed: chunkCount * chunkSize < keyRange, %d * %d < %d", chunkCount, chunkSize, keyRange))
 	}
